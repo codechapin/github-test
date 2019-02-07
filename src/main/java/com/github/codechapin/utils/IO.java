@@ -5,4 +5,5 @@ public class IO {
   public static void println(String out) {
     System.out.println(out);
   }
+
 }

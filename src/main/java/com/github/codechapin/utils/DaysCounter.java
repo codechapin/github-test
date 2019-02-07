@@ -58,18 +58,24 @@ public class DaysCounter {
   }
 
   public class Entry implements Comparable<Entry> {
-    private final String day;
+    private final DayOfWeek day;
+    private final String displayDay;
     private final Integer value;
 
     public Entry(DayOfWeek day, AtomicInteger value) {
       // hardcoding for english, but in a web environment we should get this from browser information.
-      this.day = day.getDisplayName(TextStyle.FULL_STANDALONE, Locale.ENGLISH);
+      this.day = day;
+      this.displayDay = day.getDisplayName(TextStyle.FULL_STANDALONE, Locale.ENGLISH);
 
       // do it now, otherwise comparing would go weird if another thread modifies the values
       this.value = value.get();
     }
 
-    public String getDay() {
+    public String getDisplayDay() {
+      return displayDay;
+    }
+
+    public DayOfWeek getDay() {
       return day;
     }
 

@@ -45,19 +45,19 @@ public class DaysCounterTest {
 
     var first = all.removeFirst();
 
-    assertEquals(first.getDay(), "Wednesday");
+    assertEquals(first.getDisplayDay(), "Wednesday");
     assertEquals(first.getValue(), 55);
 
     var second = all.removeFirst();
-    assertEquals(second.getDay(), "Friday");
+    assertEquals(second.getDisplayDay(), "Friday");
     assertEquals(second.getValue(), 23);
 
     var third = all.removeFirst();
-    assertEquals(third.getDay(), "Monday");
+    assertEquals(third.getDisplayDay(), "Monday");
     assertEquals(third.getValue(), 0);
 
     var fourth = all.removeFirst();
-    assertEquals(fourth.getDay(), "Tuesday");
+    assertEquals(fourth.getDisplayDay(), "Tuesday");
     assertEquals(fourth.getValue(), 0);
 
   }
@@ -75,19 +75,19 @@ public class DaysCounterTest {
 
     var first = all.removeLast();
 
-    assertEquals(first.getDay(), "Wednesday");
+    assertEquals(first.getDisplayDay(), "Wednesday");
     assertEquals(first.getValue(), 55);
 
     var second = all.removeLast();
-    assertEquals(second.getDay(), "Friday");
+    assertEquals(second.getDisplayDay(), "Friday");
     assertEquals(second.getValue(), 23);
 
     var third = all.removeLast();
-    assertEquals(third.getDay(), "Sunday");
+    assertEquals(third.getDisplayDay(), "Sunday");
     assertEquals(third.getValue(), 0);
 
     var fourth = all.removeLast();
-    assertEquals(fourth.getDay(), "Saturday");
+    assertEquals(fourth.getDisplayDay(), "Saturday");
     assertEquals(fourth.getValue(), 0);
 
   }
