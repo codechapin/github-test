@@ -13,8 +13,11 @@ public class CommitsParserTest {
     var total = 0;
 
     var input = this.getClass().getResourceAsStream("/github-commits.json");
-    var parser = new CommitsParser(input);
-    var counter = parser.parseCommitDates();
+
+    var parser = new CommitsParser();
+    parser.parseCommitDates(input);
+
+    var counter = parser.getCounter();
     var sorted = counter.sorted(SortType.DESCENDING);
 
     for (DaysCounter.Entry entry : sorted) {

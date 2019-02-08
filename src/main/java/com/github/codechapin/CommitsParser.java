@@ -13,22 +13,21 @@ import java.time.ZoneId;
 import java.time.format.DateTimeFormatter;
 
 public class CommitsParser {
+  private final DaysCounter counter = new DaysCounter();
 
-  private final InputStream input;
+  DaysCounter getCounter() {
+    return counter;
+  }
 
-  public CommitsParser(InputStream input) {
+  void parseCommitDates(InputStream input) {
     if (input == null) {
       throw new NullPointerException("The InputStream with the commit history in JSON format is null.");
     }
 
-    this.input = input;
-  }
-
-  public DaysCounter parseCommitDates() {
     // since some of the repositories have quite a large amount of commits,
     // I decided to use a fast way to parse the JSON.
     try {
-      var counter = new DaysCounter();
+
 
       var factory = new JsonFactory();
       var parser = factory.createParser(input);
@@ -42,8 +41,6 @@ public class CommitsParser {
         }
       }
 
-      return counter;
-
     } catch (IOException e) {
       throw new RuntimeException("Error reading the JSON data.", e);
     }
@@ -54,7 +51,7 @@ public class CommitsParser {
     do {
 
       if (isInField(parser, "author")) {
-        // found and author, extract date from it.
+        // found an author, extract date from it.
         handleAuthor(parser, counter);
       }
     } while (isInObject(parser));

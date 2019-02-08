@@ -18,4 +18,19 @@ public enum SortType {
         return (Comparator<T>) Comparator.naturalOrder();
     }
   }
+
+  public static SortType parse(String val) {
+    if (val == null) {
+      return SortType.DESCENDING;
+    }
+
+    switch (val.toLowerCase()) {
+      case "asc":
+        return SortType.ASCENDING;
+      case "desc":
+        return SortType.DESCENDING;
+      default:
+        return SortType.DESCENDING;
+    }
+  }
 }
